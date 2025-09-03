@@ -1,4 +1,4 @@
-class BusStop {
+class BusStopModel {
   final String stopname;
   final double latitude;
   final double longitude;
@@ -6,7 +6,7 @@ class BusStop {
   final String? stopTime;
   bool isFavorite;
 
-  BusStop({
+  BusStopModel({
     required this.stopname,
     required this.latitude,
     required this.longitude,
@@ -15,8 +15,8 @@ class BusStop {
     this.isFavorite = false,
   });
 
-  factory BusStop.fromJson(Map<String, dynamic> json) {
-    return BusStop(
+  factory BusStopModel.fromJson(Map<String, dynamic> json) {
+    return BusStopModel(
       stopname: json['stopname'] ?? '',
       latitude: (json['latitude'] ?? 0.0).toDouble(),
       longitude: (json['longitude'] ?? 0.0).toDouble(),
@@ -45,7 +45,7 @@ class BusStop {
     return '${arrival.hour.toString().padLeft(2, '0')}:${arrival.minute.toString().padLeft(2, '0')}';
   }
 
-  BusStop copyWith({
+  BusStopModel copyWith({
     String? stopname,
     double? latitude,
     double? longitude,
@@ -53,7 +53,7 @@ class BusStop {
     String? stopTime,
     bool? isFavorite,
   }) {
-    return BusStop(
+    return BusStopModel(
       stopname: stopname ?? this.stopname,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,

@@ -22,6 +22,8 @@ class _BusStopPageState extends State<BusStopPage> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<BusProvider>(context);
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Bus Stops'),
@@ -35,6 +37,9 @@ class _BusStopPageState extends State<BusStopPage> {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.search),
                 ),
+                onChanged: (value) {
+                  provider.searchStops(value);
+                },
               ),
             ),
           ),
@@ -53,9 +58,9 @@ class _BusStopPageState extends State<BusStopPage> {
               ));
             } else {
               return ListView.builder(
-                itemCount: busPro.stops.length,
+                itemCount: busPro.filteredStops.length,
                 itemBuilder: (context, index) {
-                  final stop = busPro.stops[index];
+                  final stop = busPro.filteredStops[index];
                   return ListTile(
                     title: Text(stop.stopname),
                     subtitle:

@@ -29,5 +29,33 @@ class BusProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  
+  void searchStops(String query) {
+    if (query.isEmpty) {
+      filteredStops = stops;
+    } else {
+      filteredStops = stops
+          .where((stop) =>
+              stop.stopname.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    notifyListeners();
+  }
+
+  Future<void> toggleFavorite(BusStopModel stop) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (favoriteIds.contains(stop.stopname)) {
+      favoriteIds.remove(stop.stopname);
+    } else {
+      favoriteIds.add(stop.stopname);
+    }
+    await prefs.setStringList('favorites', favoriteIds.toList());
+
+    stops = stops
+        .map((s) => s.stopname == stop.stopname
+            ? s.copyWith(isFavorite: !s.isFavorite)
+            : s)
+        .toList();
+
+    searchStops(""); 
+  }
 }

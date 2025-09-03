@@ -11,7 +11,7 @@ class BusProvider with ChangeNotifier {
   Set<String> favoriteIds = {};
   bool isLoading = false;
 
-  Future<void> loadStops() async {
+  Future<void> fetchBusStops() async {
     isLoading = true;
     notifyListeners();
 

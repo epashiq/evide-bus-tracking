@@ -1,5 +1,6 @@
 import 'package:evide_bus_tracking_test/controller/provider/bus_provider.dart';
 import 'package:evide_bus_tracking_test/view/screens/bus_details_stop_screen.dart';
+import 'package:evide_bus_tracking_test/view/screens/favourite_bus_stop_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +37,17 @@ class _BusStopScreenState extends State<BusStopScreen> {
             fontSize: 20,
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FavoriteBusStopScreen(),
+                    ));
+              },
+              icon: const Icon(Icons.favorite))
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: Padding(

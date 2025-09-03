@@ -36,7 +36,6 @@ class BusDetailsStopScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Stop Info Card
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16)),
@@ -88,8 +87,6 @@ class BusDetailsStopScreen extends StatelessWidget {
                 ),
               ),
             ),
-
-            // ETA Card
             Card(
               color: Colors.blue.shade50,
               shape: RoundedRectangleBorder(
@@ -110,32 +107,6 @@ class BusDetailsStopScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Action Buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.map),
-                  label: const Text("View on Map"),
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12))),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.directions),
-                  label: const Text("Get Directions"),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12))),
-                ),
-              ],
             ),
           ],
         ),
